@@ -24,7 +24,9 @@ menu = st.sidebar.radio(
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 st.sidebar.markdown('---')
-st.sidebar.write('Equipe Hibou \nEpsilon France \nDécembre 2021')
+st.sidebar.write('Equipe Hibou')
+st.sidebar.write('Epsilon France')
+st.sidebar.write('Décembre 2021')
 
 if menu == 'Intro':
     set_home()
