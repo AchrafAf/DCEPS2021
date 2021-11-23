@@ -3,7 +3,22 @@ import streamlit as st
 import pandas as pd
 from EDA_IMDb_functions import *
 
+def update_theme(primaryColor,backgroundColor,secondaryBackgroundColor,textColor,font):
+    # Theme Base
+    theme_data=['[theme]\n\n','primaryColor=\"%s\"\n'%(primaryColor),
+    'backgroundColor=\"%s\"\n'%(backgroundColor),
+    'secondaryBackgroundColor=\"%s\"\n'%(secondaryBackgroundColor),
+    'textColor=\"%s\"\n'%(textColor),
+    'font=\"%s\"\n'%(font)]
+    theme_file=open('.streamlit/config.toml','w+')
+    theme_file.writelines(theme_data)
 
+primaryColor="#f5c518"
+backgroundColor="#000000"
+secondaryBackgroundColor="#222222"
+textColor="#ffffff"
+font="sans serif"
+update_theme(primaryColor,backgroundColor,secondaryBackgroundColor,textColor,font)
 
 st.set_page_config(page_title='EDA - IMDb',
                    page_icon='https://www.aacc.fr/sites/default/files/styles/logo/https/ucarecdn.com//1033ec06-23ee-4ee6-b583-87f191f58308/type.png?itok=Z0q9Mgu5',
