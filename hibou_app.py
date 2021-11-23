@@ -9,8 +9,8 @@ st.set_page_config(page_title='EDA - IMDb',
                    page_icon='https://www.google.com/s2/favicons?domain=www.imdb.com',
                    layout="wide")
 
-st.sidebar.image('images/800px-IMDB_Logo_2016.svg.png', width=200)
-st.sidebar.header('Público, crítica y taquilla en IMDb')
+st.sidebar.image('images/epsilonlogo.png', width=200)
+st.sidebar.header('Data Challenge 2021')
 st.sidebar.markdown('Análisis exploratorio de datos | Películas 2014 a 2019')
 
 
