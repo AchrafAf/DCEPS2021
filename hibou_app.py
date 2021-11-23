@@ -11,7 +11,7 @@ st.set_page_config(page_title='EDA - IMDb',
 
 st.sidebar.image('images/epsilonlogo.png', width=200)
 st.sidebar.header('Data Challenge 2021')
-st.sidebar.markdown('Análisis exploratorio de datos | Películas 2014 a 2019')
+st.sidebar.markdown('Analyse exploratoire des données Microfaune de Dataforgood')
 
 
 menu = st.sidebar.radio(
@@ -24,7 +24,7 @@ menu = st.sidebar.radio(
 st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 st.sidebar.markdown('---')
-st.sidebar.write('Ana Blanco | Julio 2021 anablancodelgado@gmail.com https://casiopa.github.io/')
+st.sidebar.write('Equipe Hibou | Epsilon France | Décembre 2021')
 
 if menu == 'Intro':
     set_home()
