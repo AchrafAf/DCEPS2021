@@ -25,7 +25,6 @@ st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', uns
 
 st.sidebar.markdown('---')
 st.sidebar.write('Equipe Hibou')
-st.sidebar.write('Epsilon France')
 st.sidebar.write('Décembre 2021')
 
 if menu == 'Intro':
