@@ -6,7 +6,7 @@ from EDA_IMDb_functions import *
 
 
 st.set_page_config(page_title='EDA - IMDb',
-                   page_icon='https://www.google.com/s2/favicons?domain=www.imdb.com',
+                   page_icon='https://www.aacc.fr/sites/default/files/styles/logo/https/ucarecdn.com//1033ec06-23ee-4ee6-b583-87f191f58308/type.png?itok=Z0q9Mgu5',
                    layout="wide")
 
 st.sidebar.image('images/epsilonlogo.png', width=200)
