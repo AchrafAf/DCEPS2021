@@ -13,6 +13,7 @@ from EDA_IMDb_variables import *
 import librosa
 import IPython.display as ipd
 import librosa.display
+import scipy
 
 #@st.cache
 def load_csv(path, sep=';'):
@@ -1115,8 +1116,24 @@ def set_features():
     plt.title('Mel Spectrogram')
     plt.colorbar(format='%+2.0f dB');
 
+    chroma_orig = librosa.feature.chroma_cqt(y=x, sr=sr)
+    y_harm = librosa.effects.harmonic(y=x, margin=8)
+    chroma_harm = librosa.feature.chroma_cqt(y=y_harm, sr=sr)
+    chroma_filter = np.minimum(chroma_harm,
+                            librosa.decompose.nn_filter(chroma_harm,
+                                                        aggregate=np.median,
+                                                        metric='cosine'))
+    chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
+
+    fig3, ax = plt.subplots(figsize=(15,4))
+    librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time');
+    notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
+    labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
+    ax.set_yticklabels(labels);
+
     st.write(fig1)
     st.write(fig2)
+    st.write(fig3)
 
 
 
