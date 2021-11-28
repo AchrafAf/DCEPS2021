@@ -1032,6 +1032,12 @@ def set_stats_desc():
 
     metadata = load_csv(path='data/metadata_enriched.csv', sep=',')
 
+    train_valid = metadata.groupby('base').count()[['itemid']].rename(columns={'itemid':'nb_items_base'}).reset_index()
+    fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
+                  title='Répartition des bases des fichiers sonores')
+
+    
+
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
 
