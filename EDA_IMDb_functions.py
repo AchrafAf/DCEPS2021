@@ -1094,9 +1094,9 @@ def set_features():
 
     #col1, col2 = st.columns(2)
     #with col1:
-    iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
-    ## iid (x) to iid
-    iid = '6abe6818-52ff-4cc6-8e4a'
+    iid_hasbird = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
+    iid = sample[sample.iid_hasbird == iid_hasbird].itemid.values[0]    
+    #iid = '6abe6818-52ff-4cc6-8e4a'
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
 
     col1, col2, col3 = st.columns(3)
@@ -1132,10 +1132,8 @@ def set_features():
     #ax.set_yticklabels(labels);
 
     st.write(fig1)
-    col1, col2, col3 = st.columns(3)
-    with col3:
-        st.write(fig2)
-        st.write(fig3)
+    st.write(fig2)
+    st.write(fig3)
 
 
 
