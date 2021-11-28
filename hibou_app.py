@@ -57,6 +57,8 @@ st.sidebar.write('Décembre 2021')
 
 if menu == 'Statistiques descriptives':
     set_stats_desc()
+if menu == 'Features spectrales':
+    set_features()
 elif menu == 'Data':
     set_data()
 elif menu == 'Variables de estudio':
