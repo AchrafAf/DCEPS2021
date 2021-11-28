@@ -1125,7 +1125,7 @@ def set_features():
                                                         metric='cosine'))
     chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
 
-    fig3, ax = plt.subplots(figsize=(8,3))
+    fig3, ax = plt.subplots(figsize=(4,1))
     librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time');
     #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
     #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
