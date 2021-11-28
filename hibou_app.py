@@ -23,7 +23,8 @@ font="sans serif"
 
 st.set_page_config(page_title='DataViz - Data Challenge 2021',
                    page_icon='https://www.aacc.fr/sites/default/files/styles/logo/https/ucarecdn.com//1033ec06-23ee-4ee6-b583-87f191f58308/type.png?itok=Z0q9Mgu5',
-                   layout="wide")
+                   layout="centered")
+
 
 st.sidebar.image('images/epsilonlogo.png', width=200)
 st.sidebar.header('Data Challenge 2021')
