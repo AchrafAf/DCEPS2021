@@ -29,10 +29,19 @@ st.sidebar.image('images/epsilonlogo.png', width=200)
 st.sidebar.header('Data Challenge 2021')
 st.sidebar.markdown('Analyse exploratoire des données Microfaune de Dataforgood')
 
-
+ #   ("Statistiques descriptives",
+ #    "Décomposition d'un signal",
+ #    "Features spectrales", 
+ #    "Notes musicales",
+ #    ),
 menu = st.sidebar.radio(
     "",
-    ("Intro", "Data", "Variables de estudio", 'Otras variables', "Relaciones entre variables", "Matrices de correlación"),
+    ("Statistiques descriptives", 
+    "Data", 
+    "Variables de estudio",
+    "Otras variables",
+    "Relaciones entre variables", 
+    "Matrices de correlación"),
 )
 
 # Pone el radio-button en horizontal. Afecta a todos los radio button de una página.
@@ -43,8 +52,8 @@ st.sidebar.markdown('---')
 st.sidebar.write('Equipe Hibou')
 st.sidebar.write('Décembre 2021')
 
-if menu == 'Intro':
-    set_home()
+if menu == 'Statistiques descriptives':
+    set_stats_desc()
 elif menu == 'Data':
     set_data()
 elif menu == 'Variables de estudio':
