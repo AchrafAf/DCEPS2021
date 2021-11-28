@@ -59,6 +59,10 @@ if menu == 'Statistiques descriptives':
     set_stats_desc()
 if menu == 'Features spectrales':
     set_features()
+    
+if menu == "Décomposition d'un signal":
+    set_decomposition()
+
 elif menu == 'Data':
     set_data()
 elif menu == 'Variables de estudio':
