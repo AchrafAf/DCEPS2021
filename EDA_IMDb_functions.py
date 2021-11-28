@@ -1133,8 +1133,8 @@ def set_features():
     chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
 
     fig3, ax = plt.subplots(figsize=(13,4))
-    librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax);
-    plt.colorbar()
+    librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax)
+    plt.colorbar();
     #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
     #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
     #ax.set_yticklabels(labels);
