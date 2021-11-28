@@ -12,6 +12,7 @@ from plotly.subplots import make_subplots
 from EDA_IMDb_variables import *
 import librosa
 import IPython.display as ipd
+import librosa.display
 
 #@st.cache
 def load_csv(path, sep=';'):
