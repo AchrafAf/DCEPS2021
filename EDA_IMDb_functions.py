@@ -10,7 +10,7 @@ import plotly.graph_objs as go
 from plotly import tools
 from plotly.subplots import make_subplots
 from EDA_IMDb_variables import *
-
+import librosa
 
 
 #@st.cache
@@ -1090,9 +1090,11 @@ def set_features():
     st.title('Features spectrales')
     sample = load_csv(path='data/sample_metadata.csv', sep=',')
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
     with col1:
         iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
+    iid = '6abe6818-52ff-4cc6-8e4a'
+    x, sr = librosa.load(f'data/wav/{iid}.wav')
 
 def set_data():
     movies = load_csv(path)
