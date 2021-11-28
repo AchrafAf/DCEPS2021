@@ -14,7 +14,7 @@ from EDA_IMDb_variables import *
 
 #@st.cache
 def load_csv(path, sep=';'):
-    data = pd.load_csv('data\metadata_enriched.csv', sep=',')
+    data = pd.load_csv(path, sep=sep)
     return data
 
 
@@ -1030,7 +1030,7 @@ def set_stats_desc():
 
     st.markdown('# Statistiques descriptives')
 
-    metadata = read_csv()
+    metadata = load_csv(path='data\metadata_enriched.csv', sep=',')
 
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
