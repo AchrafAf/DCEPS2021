@@ -1103,7 +1103,10 @@ def set_features():
     df_audio = pd.DataFrame(x, columns=['audio'])
     df_audio['time'] = df_audio.index/sr
     fig1 = px.line(df_audio, x='time', y="audio")
-
+    fig1.update_yaxes(visible=False)
+    fig1.update_layout(title_text=f'Audio | iid = {iid}',
+                    paper_bgcolor='#F0F2F6')
+                
     st.write(fig1)
 
 
