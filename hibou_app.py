@@ -36,7 +36,8 @@ st.sidebar.markdown('Analyse exploratoire des données Microfaune de Dataforgood
  #    ),
 menu = st.sidebar.radio(
     "",
-    ("Statistiques descriptives", 
+    ("Statistiques descriptives",
+     "Décomposition d'un signal", 
     "Data", 
     "Variables de estudio",
     "Otras variables",
