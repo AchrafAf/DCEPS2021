@@ -1036,7 +1036,19 @@ def set_stats_desc():
     fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
                   title='Répartition des bases des fichiers sonores')
 
+    
+    label_func = lambda x : 'Contient chant oiseau' if x==1 else 'Ne contient pas de chant oiseau'
+
+    hasbird_flag = metadata.groupby('hasbird').count()[['itemid']].rename(columns={'itemid':'nb_items_hasbird'}).reset_index()
+    hasbird_flag['catégorie'] = hasbird_flag.hasbird.apply(label_func)
+
+    fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
+                title='Répartition des catégories de fichiers sonores')
+    fig2.update_layout(paper_bgcolor='#F1F0F0')
+
+
     st.write(fig1)
+    st.write(fig2)
 
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
