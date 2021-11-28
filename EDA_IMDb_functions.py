@@ -1086,9 +1086,6 @@ def set_stats_desc():
     st.write(fig3)
     st.write(fig4)
 
-    #st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
-
-
 def set_data():
     movies = load_csv(path)
     rates = pd.read_csv(path_rates)
