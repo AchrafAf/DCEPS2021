@@ -1099,6 +1099,7 @@ def set_features():
     col1, col2, col3 = st.columns(3)
     with col2:
         st.write(ipd.Audio(x, rate=sr))
+    st.audio(x, format='audio/wav',start_time=0)
 
 
 
