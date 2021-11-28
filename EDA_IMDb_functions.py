@@ -1099,9 +1099,12 @@ def set_features():
     col1, col2, col3 = st.columns(3)
     with col2:
         st.write(ipd.Audio(x, rate=sr))
-    audio_file = open(f'data/wav_samples/{iid}.wav', 'rb')
-    audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/wav',start_time=0)
+    
+    df_audio = pd.DataFrame(x, columns=['audio'])
+    df_audio['time'] = df_audio.index/sr
+    fig1 = px.line(df_audio, x='time', y="audio")
+
+    st.write(fig1)
 
 
 
