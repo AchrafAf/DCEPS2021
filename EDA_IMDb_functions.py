@@ -1079,7 +1079,7 @@ def set_stats_desc():
                 height=400,
                 title='Répartition des fichiers audios en fonction de leur durée')
     fig4.update(layout_coloraxis_showscale=False)
-    fig4.update_layout(paper_bgcolor='#F1F0F0')
+    fig4.update_layout(paper_bgcolor='#F0F2F6')
 
     st.write(fig1)
     st.write(fig2)
