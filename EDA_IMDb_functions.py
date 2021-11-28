@@ -1095,6 +1095,9 @@ def set_features():
         iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
     iid = '6abe6818-52ff-4cc6-8e4a'
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
+    import IPython.display as ipd
+    st.write(ipd.Audio(x, rate=sr))
+    
 
 
 def set_data():
