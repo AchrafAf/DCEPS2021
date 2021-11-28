@@ -1132,8 +1132,11 @@ def set_features():
     #ax.set_yticklabels(labels);
 
     st.write(fig1)
-    st.write(fig2)
-    st.write(fig3)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(fig2)
+    with col2:
+        st.write(fig3)
 
 
 
