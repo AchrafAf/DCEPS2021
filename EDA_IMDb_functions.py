@@ -1,3 +1,4 @@
+from pandas.io.parsers import read_csv
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -12,9 +13,10 @@ from EDA_IMDb_variables import *
 
 
 #@st.cache
-def load_csv(path):
-    data = pd.read_csv(path, sep=';')
+def load_csv(path, sep=';'):
+    data = pd.load_csv('data\metadata_enriched.csv', sep=',')
     return data
+
 
 
 def bars_nmovies_imdb():
@@ -1027,6 +1029,9 @@ def strip_metascore_economicvariable(movies, economic_variable, title_economic_v
 def set_stats_desc():
 
     st.markdown('# Statistiques descriptives')
+
+    metadata = read_csv()
+
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
 
