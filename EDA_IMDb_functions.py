@@ -1036,7 +1036,7 @@ def set_stats_desc():
     fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
                   title='Répartition des bases des fichiers sonores')
 
-    
+    st.write(fig1)
 
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
