@@ -1026,7 +1026,7 @@ def strip_metascore_economicvariable(movies, economic_variable, title_economic_v
 
 def set_stats_desc():
 
-    st.markdown('#Statistiques descriptives')
+    st.markdown('# Statistiques descriptives')
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
 
