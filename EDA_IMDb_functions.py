@@ -1030,7 +1030,7 @@ def set_stats_desc():
 
     st.markdown('# Statistiques descriptives')
 
-    metadata = load_csv(path='data\metadata_enriched.csv', sep=',')
+    metadata = load_csv(path='data/metadata_enriched.csv', sep=',')
 
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
