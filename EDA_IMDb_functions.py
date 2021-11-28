@@ -1071,11 +1071,22 @@ def set_stats_desc():
     fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base',
                     paper_bgcolor='#F0F2F6')
 
+
+    df_t_gpd = metadata.groupby(['tranche_', 'tranche']).count()[['t']]\
+                .reset_index().sort_values('tranche_', ascending=False)
+
+    fig4 = px.bar(df_t_gpd, x="t", y="tranche", color='tranche_', orientation='h',
+                height=400,
+                title='Répartition des fichiers audios en fonction de leur durée')
+    fig4.update(layout_coloraxis_showscale=False)
+    fig4.update_layout(paper_bgcolor='#F1F0F0')
+
     st.write(fig1)
     st.write(fig2)
     st.write(fig3)
+    st.write(fig4)
 
-    st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
+    #st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
 
 def set_data():
