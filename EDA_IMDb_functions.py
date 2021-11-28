@@ -1092,7 +1092,7 @@ def set_features():
 
     col1, col2 = st.columns(2)
     with col1:
-        iid = st.selectbox(options=sample.iid_hasbird)
+        iid = st.selectbox('', sample.iid_hasbird)
     iid = '6abe6818-52ff-4cc6-8e4a'
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
     with col2:
