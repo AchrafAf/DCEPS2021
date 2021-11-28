@@ -14,7 +14,7 @@ from EDA_IMDb_variables import *
 
 #@st.cache
 def load_csv(path, sep=';'):
-    data = pd.load_csv(path, sep=sep)
+    data = pd.read_csv(path, sep=sep)
     return data
 
 
