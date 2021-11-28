@@ -1086,6 +1086,9 @@ def set_stats_desc():
     st.write(fig3)
     st.write(fig4)
 
+def set_features():
+    st.title('Features spectrales')
+
 def set_data():
     movies = load_csv(path)
     rates = pd.read_csv(path_rates)
