@@ -1125,11 +1125,11 @@ def set_features():
                                                         metric='cosine'))
     chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
 
-    fig3, ax = plt.subplots(figsize=(15,4))
+    fig3, ax = plt.subplots(figsize=(13,4))
     librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time');
-    notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
-    labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
-    ax.set_yticklabels(labels);
+    #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
+    #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
+    #ax.set_yticklabels(labels);
 
     st.write(fig1)
     st.write(fig2)
