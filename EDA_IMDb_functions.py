@@ -1046,9 +1046,33 @@ def set_stats_desc():
                 title='Répartition des catégories de fichiers sonores')
     fig2.update_layout(paper_bgcolor='#F1F0F0')
 
+    hasbird_flag = metadata.groupby(['base', 'hasbird']).count()[['itemid']]\
+                        .rename(columns={'itemid':'nb_items_hasbird'}).reset_index()
+    hasbird_flag['catégorie'] = hasbird_flag.hasbird.apply(label_func)
+
+    fig3 = make_subplots(rows=1, cols=2, specs=[[{"type": "pie"}, {"type": "pie"}]])
+
+
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag[hasbird_flag.base=='apprentissage']['nb_items_hasbird'].values,
+        labels=hasbird_flag[hasbird_flag.base=='apprentissage']['catégorie'].values,
+        hole=.3,
+        title="apprentissage"), 
+        row=1, col=1)
+
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag[hasbird_flag.base=='validation']['nb_items_hasbird'].values,
+        labels=hasbird_flag[hasbird_flag.base=='validation']['catégorie'].values,
+        hole=.3,
+        title="validation"),
+        row=1, col=2)
+
+    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base',
+                    paper_bgcolor='#F1F0F0')
 
     st.write(fig1)
     st.write(fig2)
+    st.write(fig3)
 
     st.write(intro_herramientas_fuentes, unsafe_allow_html=True)
 
