@@ -1093,6 +1093,7 @@ def set_features():
     #col1, col2 = st.columns(2)
     #with col1:
     iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
+    ## iid (x) to iid
     iid = '6abe6818-52ff-4cc6-8e4a'
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
 
@@ -1104,10 +1105,17 @@ def set_features():
     df_audio['time'] = df_audio.index/sr
     fig1 = px.line(df_audio, x='time', y="audio")
     fig1.update_yaxes(visible=False)
-    fig1.update_layout(title_text=f'Audio | iid = {iid}',
-                    paper_bgcolor='#F0F2F6')
-                
+    fig1.update_layout(paper_bgcolor='#F0F2F6')
+
+    fig2 = plt.figure(figsize=(15,4))
+    mel_spect = librosa.feature.melspectrogram(y=x, sr=sr, n_fft=2048)
+    mel_spect = librosa.power_to_db(mel_spect, ref=np.max)
+    librosa.display.specshow(mel_spect, y_axis='mel', x_axis='time');
+    plt.title('Mel Spectrogram')
+    plt.colorbar(format='%+2.0f dB');
+
     st.write(fig1)
+    st.write(fig2)
 
 
 
