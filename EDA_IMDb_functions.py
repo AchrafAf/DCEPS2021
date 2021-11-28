@@ -1097,12 +1097,19 @@ def set_features():
     iid_hasbird = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
     iid = sample[sample.iid_hasbird == iid_hasbird].itemid.values[0]    
     #iid = '6abe6818-52ff-4cc6-8e4a'
+
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
 
     col1, col2, col3 = st.columns(3)
     with col2:
         st.write(ipd.Audio(x, rate=sr))
     
+    audio_file = open(f'data/wav_samples/{iid}.wav', 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/wav')
+
+
+
     df_audio = pd.DataFrame(x, columns=['audio'])
     df_audio['time'] = df_audio.index/sr
     fig1 = px.line(df_audio, x='time', y="audio")
@@ -1127,6 +1134,7 @@ def set_features():
 
     fig3, ax = plt.subplots(figsize=(13,4))
     librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax);
+    plt.colorbar()
     #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
     #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
     #ax.set_yticklabels(labels);
