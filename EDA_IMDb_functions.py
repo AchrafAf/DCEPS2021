@@ -1090,9 +1090,9 @@ def set_features():
     st.title('Features spectrales')
     sample = load_csv(path='data/sample_metadata.csv', sep=',')
 
-    col1, col2 = st.columns(2)
-    with col1:
-        iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
+    #col1, col2 = st.columns(2)
+    #with col1:
+    iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
     iid = '6abe6818-52ff-4cc6-8e4a'
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
 
