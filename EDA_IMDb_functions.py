@@ -1090,7 +1090,7 @@ def set_features():
     st.title('Features spectrales')
     sample = load_csv(path='data/sample_metadata.csv', sep=',')
 
-    st.sidebar.selectbox('Choisir un fichier audio', sample.iid_hasbird)
+    iid = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
 
 def set_data():
     movies = load_csv(path)
