@@ -1099,10 +1099,6 @@ def set_features():
     #iid = '6abe6818-52ff-4cc6-8e4a'
 
     x, sr = librosa.load(f'data/wav_samples/{iid}.wav')
-
-    col1, col2, col3 = st.columns(3)
-    with col2:
-        st.write(ipd.Audio(x, rate=sr))
     
     audio_file = open(f'data/wav_samples/{iid}.wav', 'rb')
     audio_bytes = audio_file.read()
