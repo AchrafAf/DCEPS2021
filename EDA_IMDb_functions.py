@@ -1033,7 +1033,7 @@ def strip_metascore_economicvariable(movies, economic_variable, title_economic_v
 
 
 def set_stats_desc():
-
+    st.image('images/barre_eps.PNG', width=400)
     st.markdown('# Statistiques descriptives')
 
     metadata = load_csv(path='data/metadata_enriched.csv', sep=',')
@@ -1092,7 +1092,7 @@ def set_stats_desc():
     st.write(fig4)
 
 def set_stats_desc_v2():
-
+    st.image('images/barre_eps.PNG', width=400)
     st.markdown('# Statistiques descriptives')
 
     metadata = load_csv(path='data/metadata_enriched.csv', sep=',')
@@ -1142,6 +1142,7 @@ def set_stats_desc_v2():
     
 
 def set_features():
+    st.image('images/barre_eps.PNG', width=400)
     st.title('Features spectrales')
     sample = load_csv(path='data/sample_metadata.csv', sep=',')
 
@@ -1196,7 +1197,7 @@ def set_decomposition():
     """
     function to explain fourier transform
     """
-
+    st.image('images/barre_eps.PNG', width=400)
     st.markdown("# La décomposition d'un signal")
     st.markdown("### Par la transformation de fourier")
 
