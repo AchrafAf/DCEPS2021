@@ -1236,7 +1236,7 @@ def set_decomposition_v2():
     """
     st.image('images/barre_eps.PNG', width=400)
     st.markdown("# La décomposition d'un signal")
-    st.markdown("### Par la transformation de fourier")
+    st.markdown("### Transformation de Fourier")
 
     #st.write('Select three known variables:')
     #opts = [ ('s', 'displacement'), ('u', 'initial velocity'), ('v', 'final velocity'), ('a', 'acceleration'), ('t', 'time') ]
@@ -1295,12 +1295,15 @@ def set_decomposition_v2():
     with col3:
         st.write(fig2)
 
+    st.markdown("### Recomposition du signal")
+    
+
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         f1 = st.checkbox('1 hz')
     with col2:
         f2 = st.checkbox('4 hz')
-    with col2:
+    with col3:
         f3 = st.checkbox('7 hz')
 
 
