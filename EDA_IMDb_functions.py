@@ -1289,10 +1289,10 @@ def set_decomposition_v2():
     fig2.update_xaxes(title_text = "Freq (Hz)")
     fig2.update_yaxes(title_text = "FFT Amplitude")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.write(fig1)
-    with col2:
+    with col3:
         st.write(fig2)
 
 
