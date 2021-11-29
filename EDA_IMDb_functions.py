@@ -1295,14 +1295,14 @@ def set_decomposition_v2():
     with col3:
         st.write(fig2)
 
-    f1 = st.checkbox('1 hz')
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        f1 = st.checkbox('1 hz')
+    with col2:
     f2 = st.checkbox('4 hz')
-    f3 = st.checkbox('7 hz')
-    
+    with col2:
+   f3 = st.checkbox('7 hz')
 
-    st.write(f1)
-    st.write(f2)
-    st.write(f3)
 
 
 def set_notes():
