@@ -1091,6 +1091,68 @@ def set_stats_desc():
     st.write(fig3)
     st.write(fig4)
 
+def set_stats_desc_v2():
+
+    st.markdown('# Statistiques descriptives')
+
+    metadata = load_csv(path='data/metadata_enriched.csv', sep=',')
+
+    train_valid = metadata.groupby('base').count()[['itemid']].rename(columns={'itemid':'nb_items_base'}).reset_index()
+    fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
+                  title='Répartition des bases des fichiers sonores')
+    fig1.update_layout(paper_bgcolor='#F0F2F6')
+    
+    label_func = lambda x : 'Contient chant oiseau' if x==1 else 'Ne contient pas de chant oiseau'
+
+    hasbird_flag = metadata.groupby('hasbird').count()[['itemid']].rename(columns={'itemid':'nb_items_hasbird'}).reset_index()
+    hasbird_flag['catégorie'] = hasbird_flag.hasbird.apply(label_func)
+
+    fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
+                title='Répartition des catégories de fichiers sonores')
+    fig2.update_layout(paper_bgcolor='#F0F2F6')
+
+    hasbird_flag = metadata.groupby(['base', 'hasbird']).count()[['itemid']]\
+                        .rename(columns={'itemid':'nb_items_hasbird'}).reset_index()
+    hasbird_flag['catégorie'] = hasbird_flag.hasbird.apply(label_func)
+
+    fig3 = make_subplots(rows=1, cols=2, specs=[[{"type": "pie"}, {"type": "pie"}]])
+
+
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag[hasbird_flag.base=='apprentissage']['nb_items_hasbird'].values,
+        labels=hasbird_flag[hasbird_flag.base=='apprentissage']['catégorie'].values,
+        hole=.3,
+        title="apprentissage"), 
+        row=1, col=1)
+
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag[hasbird_flag.base=='validation']['nb_items_hasbird'].values,
+        labels=hasbird_flag[hasbird_flag.base=='validation']['catégorie'].values,
+        hole=.3,
+        title="validation"),
+        row=1, col=2)
+
+    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base',
+                    paper_bgcolor='#F0F2F6')
+
+
+    df_t_gpd = metadata.groupby(['tranche_', 'tranche']).count()[['t']]\
+                .reset_index().sort_values('tranche_', ascending=False)
+
+    fig4 = px.bar(df_t_gpd, x="t", y="tranche", color='tranche_', orientation='h',
+                height=400,
+                title='Répartition des fichiers audios en fonction de leur durée')
+    fig4.update(layout_coloraxis_showscale=False)
+    fig4.update_layout(paper_bgcolor='#F0F2F6')
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(fig1)
+    with col2:
+        st.write(fig2)
+    st.write(fig3)
+    st.write(fig4)
+
 def set_features():
     st.title('Features spectrales')
     sample = load_csv(path='data/sample_metadata.csv', sep=',')
