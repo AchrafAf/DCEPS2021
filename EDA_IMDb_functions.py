@@ -1110,21 +1110,32 @@ def set_stats_desc_v2():
 
     fig = make_subplots(
         rows=3, cols=2,
-        specs=[[{}, {}],
-               [{}, {}],
-               [{"colspan": 2}, None]],
-        subplot_titles=("First Subplot","Second Subplot", "Third Subplot", "4th subplot"))
-
-    fig.add_trace(go.Scatter(x=[1, 2], y=[1, 2]),
-                    row=1, col=1)
+        specs=[[{"type": "pie"}, {"type": "pie"}],
+            [{"type": "pie"}, {"type": "pie"}],
+            [{"colspan": 2, "type":'xy'}, None]],
+        subplot_titles=("First Subplot","Second Subplot", "Third Subplot", "4th subplot", '5th'))
 
     fig.add_trace(go.Pie(values=train_valid.nb_items_base,
-                            labels=train_valid.base),
-                  row=1, col=2)
-    fig.add_trace(go.Scatter(x=[1, 2, 3], y=[2, 1, 2]),
-                    row=2, col=1)
+                        labels=train_valid.base,
+                        hole=.3),
+                    row=1, col=1)
 
-    fig.update_layout(showlegend=False, title_text="Specs with Subplot Title")
+    fig.add_trace(go.Pie(values=hasbird_flag.nb_items_hasbird,
+                        labels=hasbird_flag['catégorie'],
+                        hole=.3),
+                row=1, col=2)
+    fig.add_trace(go.Pie(values=hasbird_flag2[hasbird_flag2.base=='apprentissage']['nb_items_hasbird'].values,
+                        labels=hasbird_flag2[hasbird_flag2.base=='apprentissage']['catégorie'].values,
+                        hole=.3),
+                    row=2, col=1)
+    fig.add_trace(go.Pie(values=hasbird_flag2[hasbird_flag2.base=='apprentissage']['nb_items_hasbird'].values,
+                        labels=hasbird_flag2[hasbird_flag2.base=='apprentissage']['catégorie'].values,
+                        hole=.3),
+                    row=2, col=2)
+    fig.add_trace(go.Bar(x=df_t_gpd.t, 
+                        y=df_t_gpd.tranche, 
+                        orientation='h'),
+                    row=3, col=1)
     st.write(fig)
 
 
