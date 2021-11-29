@@ -37,7 +37,6 @@ st.sidebar.markdown('Analyse exploratoire des données Microfaune de Dataforgood
 menu = st.sidebar.radio(
     "",
     ("Statistiques descriptives",
-     "Statistiques descriptives V2",
      "Décomposition d'un signal",
      "Features spectrales",
      "Notes musicales",
@@ -54,8 +53,6 @@ st.sidebar.write('Décembre 2021')
 
 if menu == 'Statistiques descriptives':
     set_stats_desc()
-if menu == 'Statistiques descriptives V2':
-    set_stats_desc_v2()
 if menu == 'Features spectrales':
     set_features()
 if menu == "Décomposition d'un signal":
