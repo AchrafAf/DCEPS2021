@@ -1298,7 +1298,7 @@ def set_decomposition_v2():
     st.markdown("### Recomposition du signal")
 
 
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4, col5, col6 = st.columns(6)
     with col1:
         f1 = st.checkbox('1 hz')
     with col2:
