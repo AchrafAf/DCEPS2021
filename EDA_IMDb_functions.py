@@ -1142,6 +1142,13 @@ def set_stats_desc_v2():
     fig3.update_traces(hoverinfo='label+percent', textinfo='percent', textfont_size=12,
                     marker=dict(colors=epsilon_palette[4:6], line=dict(color='#000000', width=1.5)))
 
+    fig4 = go.Figure()
+    fig4.add_trace(go.Bar(x=df_t_gpd.t, y=df_t_gpd.tranche, orientation='h',
+                    marker_color=epsilon_palette*2
+                    ))
+    fig4.update_layout(title='Répartition des fichiers audios en fonction de leur durée',
+                    paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
+                    font=dict(size=10, family='Arial'), width=400*2, height=350,)
 
 
     col1, col2 = st.columns(2)   
@@ -1150,6 +1157,7 @@ def set_stats_desc_v2():
     with col2:
         st.write(fig2)
     st.write(fig3)
+    st.write(fig4)
 
 
 
