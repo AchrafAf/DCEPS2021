@@ -1099,6 +1099,7 @@ def set_stats_desc_v2():
 
     train_valid = metadata.groupby('base').count()[['itemid']].rename(columns={'itemid':'nb_items_base'}).reset_index()
     fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
+                  width=400, height=400,
                   title='Répartition des bases des fichiers sonores')
     fig1.update_layout(paper_bgcolor='#F0F2F6')
     
@@ -1108,7 +1109,8 @@ def set_stats_desc_v2():
     hasbird_flag['catégorie'] = hasbird_flag.hasbird.apply(label_func)
 
     fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
-                title='Répartition des catégories de fichiers sonores')
+                  width=400, height=400,
+                  title='Répartition des catégories de fichiers sonores')
     fig2.update_layout(paper_bgcolor='#F0F2F6')
 
     hasbird_flag = metadata.groupby(['base', 'hasbird']).count()[['itemid']]\
