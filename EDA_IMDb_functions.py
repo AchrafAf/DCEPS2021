@@ -1118,7 +1118,7 @@ def set_stats_desc_v2():
     fig.add_trace(go.Scatter(x=[1, 2], y=[1, 2]),
                     row=1, col=1)
 
-    fig.add_trace(go.go.Pie(values=train_valid.nb_items_base,
+    fig.add_trace(go.Pie(values=train_valid.nb_items_base,
                             labels=train_valid.base),
                   row=1, col=2)
     fig.add_trace(go.Scatter(x=[1, 2, 3], y=[2, 1, 2]),
