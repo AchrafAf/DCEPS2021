@@ -1295,9 +1295,10 @@ def set_decomposition_v2():
     with col3:
         st.write(fig2)
 
-    f1 = st.checklist('1 hz')
-    f2 = st.checklist('4 hz')
-    f3 = st.checklist('7 hz')
+    f1 = st.checkbox('1 hz')
+    f2 = st.checkbox('4 hz')
+    f3 = st.checkbox('7 hz')
+    
 
     st.write(f1)
     st.write(f2)
