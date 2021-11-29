@@ -1264,18 +1264,36 @@ def set_decomposition_v2():
     n = np.arange(N)
     T = N/sr
     freq = n/T 
+    freq = freq[freq < 1000]
+    X = X[:len(freq)]
 
     fig1 = go.Figure()
     fig1.add_trace(go.Scatter(x=t, y=x,
                             name='lines',
                             line=dict(color=epsilon_palette[0], width=3)))
 
-    fig1.update_layout(paper_bgcolor='#F0F2F6',
-                    font=dict(size=10, family='Arial'), width=400*2, height=350,)
+    fig1.update_layout(title='Signal original', paper_bgcolor='#F0F2F6', 
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800*2/3, height=300,)
     fig1.update_xaxes(title_text = "Temps")
     fig1.update_yaxes(title_text = "Signal original")
 
-    st.write(fig1)
+    fig2 = go.Figure(data=[go.Bar(
+        x=freq[np.abs(X) > 0.1],
+        y=np.abs(X)[np.abs(X) > 0.1],
+        width=.2, marker_color=epsilon_palette[1:] # customize width here
+    )])
+    fig2.update_layout(title='Transformée de fourier',
+                    paper_bgcolor='#F0F2F6', margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800/3, height=300,)
+    fig2.update_xaxes(title_text = "Freq (Hz)")
+    fig2.update_yaxes(title_text = "FFT Amplitude")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(fig1)
+    with col2:
+        st.write(fig2)
 
 
 def set_notes():
