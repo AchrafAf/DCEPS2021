@@ -1296,7 +1296,7 @@ def set_decomposition_v2():
         st.write(fig2)
 
     st.markdown("### Recomposition du signal")
-    
+
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
@@ -1306,7 +1306,22 @@ def set_decomposition_v2():
     with col3:
         f3 = st.checkbox('7 hz')
 
+    fig4 = go.Figure()
+    fig4.add_trace(go.Scatter(x=t, y=x,
+                            name='lines',
+                            line=dict(color=epsilon_palette[0], width=1.5, dash='dash')))
+    fig4.add_trace(go.Scatter(x=t, y=x1*int(f1)+x2*int(f2)+x3*int(f3),
+                            name='lines',
+                            line=dict(color=epsilon_palette[4], width=1.5)))
 
+    fig4.update_layout(title='Signal recomposé', paper_bgcolor='#F0F2F6', showlegend=False,
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800/2, height=250,)
+    fig4.update_xaxes(title_text = "Temps")
+
+    col1, col2 = st.columns(2)
+    with col2:
+        st.write(fig4)
 
 def set_notes():
     st.image('images/barre_eps.PNG', width=400)
