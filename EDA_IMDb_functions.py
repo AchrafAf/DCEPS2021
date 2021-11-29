@@ -1295,6 +1295,14 @@ def set_decomposition_v2():
     with col3:
         st.write(fig2)
 
+    f1 = st.checklist('1 hz')
+    f2 = st.checklist('4 hz')
+    f3 = st.checklist('7 hz')
+
+    st.write(f1)
+    st.write(f2)
+    st.write(f3)
+
 
 def set_notes():
     st.image('images/barre_eps.PNG', width=400)
