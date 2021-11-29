@@ -1269,7 +1269,8 @@ def set_decomposition():
     
     st.pyplot(fig)
 
-
+def set_notes():
+    st.markdown('# Notes musicales')
 
 def set_data():
     movies = load_csv(path)
