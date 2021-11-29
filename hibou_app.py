@@ -41,11 +41,7 @@ menu = st.sidebar.radio(
      "Décomposition d'un signal",
      "Features spectrales",
      "Notes musicales",
-    "Data", 
-    "Variables de estudio",
-    "Otras variables",
-    "Relaciones entre variables", 
-    "Matrices de correlación"),
+    ),
 )
 
 # Pone el radio-button en horizontal. Afecta a todos los radio button de una página.
@@ -62,9 +58,10 @@ if menu == 'Statistiques descriptives V2':
     set_stats_desc_v2()
 if menu == 'Features spectrales':
     set_features()
-    
 if menu == "Décomposition d'un signal":
     set_decomposition()
+if menu == "Notes musicales":
+    set_notes()
 
 elif menu == 'Data':
     set_data()
