@@ -1077,7 +1077,7 @@ def set_stats_desc():
         title="validation"),
         row=1, col=2)
 
-    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=250,
+    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=300,
                     paper_bgcolor='#F0F2F6', legend=dict(orientation="h",y=-0.3, x=0.21),
                     font=dict(size=10, family='Arial'),
                     margin=dict(l=20, r=20, t=50, b=20))
