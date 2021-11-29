@@ -1113,10 +1113,11 @@ def set_stats_desc_v2():
     fig1.update_traces(hoverinfo='label+percent', textinfo='percent', textfont_size=12,
                     marker=dict(colors=epsilon_palette, line=dict(color='#000000', width=2))) 
     fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
-                title='Répartition des catégories de fichiers sonores', width=400, height=400)
-    fig2.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"))
-    fig2.update_traces( hoverinfo='label+percent', textinfo='percent', textfont_size=14,
-                    marker=dict(colors=epsilon_palette[2:4], line=dict(color='#000000', width=2)))
+                title='Répartition des catégories de fichiers sonores', width=400, height=300)
+    fig2.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
+                    font=dict(size=10, family='Arial'))
+    fig2.update_traces( hoverinfo='label+percent', textinfo='percent', textfont_size=12,
+                    marker=dict(colors=epsilon_palette[2:4], line=dict(color='#000000', width=1.5)))
 
     col1, col2 = st.columns(2)   
     with col1:
