@@ -1079,7 +1079,8 @@ def set_stats_desc():
 
     fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=350,
                     paper_bgcolor='#F0F2F6', legend=dict(orientation="h",y=-0.3, x=0.21),
-                    font=dict(size=10, family='Arial'))
+                    font=dict(size=10, family='Arial'),
+                    margin=dict(l=20, r=20, t=50, b=20))
     fig3.update_traces(hoverinfo='label+percent', textinfo='percent', textfont_size=12,
                     marker=dict(colors=epsilon_palette[4:6], line=dict(color='#000000', width=1.5)))
 
