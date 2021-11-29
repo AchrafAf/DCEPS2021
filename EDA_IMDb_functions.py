@@ -1047,7 +1047,7 @@ def set_stats_desc():
                 .reset_index().sort_values('tranche_', ascending=False)
 
     fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
-                title='Répartition des bases des fichiers sonores', width=400, height=300)
+                title='Répartition des bases des fichiers sonores', width=400, height=200)
     fig1.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
                     font=dict(size=10, family='Arial'),
                     margin=dict(l=20, r=20, t=50, b=20))
@@ -1055,7 +1055,7 @@ def set_stats_desc():
                     marker=dict(colors=epsilon_palette, line=dict(color='#000000', width=1.5)))
 
     fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
-                title='Répartition des catégories de fichiers sonores', width=400, height=300)
+                title='Répartition des catégories de fichiers sonores', width=400, height=200)
     fig2.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
                     font=dict(size=10, family='Arial'),
                     margin=dict(l=20, r=20, t=50, b=20))
@@ -1077,7 +1077,7 @@ def set_stats_desc():
         title="validation"),
         row=1, col=2)
 
-    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=350,
+    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=200,
                     paper_bgcolor='#F0F2F6', legend=dict(orientation="h",y=-0.3, x=0.21),
                     font=dict(size=10, family='Arial'),
                     margin=dict(l=20, r=20, t=50, b=20))
