@@ -1228,7 +1228,7 @@ def set_decomposition():
 
     plt.tight_layout()
     
-    st.pyplot(fig)*
+    st.pyplot(fig)
 
 def set_decomposition_v2():
     """
@@ -1237,7 +1237,7 @@ def set_decomposition_v2():
     st.image('images/barre_eps.PNG', width=400)
     st.markdown("# La décomposition d'un signal")
     st.markdown("### Par la transformation de fourier")
-    
+
     st.write('Select three known variables:')
     opts = [ ('s', 'displacement'), ('u', 'initial velocity'), ('v', 'final velocity'), ('a', 'acceleration'), ('t', 'time') ]
     known_variables = {symbol: st.checkbox(f"{name} ({symbol})") for symbol, name in opts}    
