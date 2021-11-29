@@ -1270,8 +1270,8 @@ def set_decomposition():
     st.pyplot(fig)
 
 def set_notes():
-    st.image('images/barre_eps.png')
-    
+    st.image('images/barre_eps.PNG')
+
     st.markdown('# Notes musicales')
     st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
 
