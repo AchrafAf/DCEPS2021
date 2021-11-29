@@ -1109,12 +1109,19 @@ def set_stats_desc_v2():
 
     fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
                 title='Répartition des bases des fichiers sonores', width=400, height=400)
-    fig1.update_layout(paper_bgcolor='#F0F2F6')
-    fig1.update_traces(showlegend=False, hoverinfo='label+percent', textinfo='label+percent', textfont_size=12,
-                    marker=dict(colors=epsilon_palette, line=dict(color='#000000', width=2)))
-    col1, col2 = st.columns(2)
+    fig1.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"))
+    fig1.update_traces(hoverinfo='label+percent', textinfo='percent', textfont_size=12,
+                    marker=dict(colors=epsilon_palette, line=dict(color='#000000', width=2)))    col1, col2 = st.columns(2)
+    fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
+                title='Répartition des catégories de fichiers sonores', width=400, height=400)
+    fig2.update_layout(paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"))
+    fig2.update_traces( hoverinfo='label+percent', textinfo='percent', textfont_size=14,
+                    marker=dict(colors=epsilon_palette[2:4], line=dict(color='#000000', width=2)))
+                    
     with col1:
         st.write(fig1)
+    with col2:
+        st.write(fig2)
 
 
 
