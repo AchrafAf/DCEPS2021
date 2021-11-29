@@ -1238,9 +1238,9 @@ def set_decomposition_v2():
     st.markdown("# La décomposition d'un signal")
     st.markdown("### Par la transformation de fourier")
 
-    st.write('Select three known variables:')
-    opts = [ ('s', 'displacement'), ('u', 'initial velocity'), ('v', 'final velocity'), ('a', 'acceleration'), ('t', 'time') ]
-    known_variables = {symbol: st.checkbox(f"{name} ({symbol})") for symbol, name in opts}    
+    #st.write('Select three known variables:')
+    #opts = [ ('s', 'displacement'), ('u', 'initial velocity'), ('v', 'final velocity'), ('a', 'acceleration'), ('t', 'time') ]
+    #known_variables = {symbol: st.checkbox(f"{name} ({symbol})") for symbol, name in opts}    
 
 
     # sampling rate
@@ -1265,51 +1265,18 @@ def set_decomposition_v2():
     T = N/sr
     freq = n/T 
 
-    fig = plt.figure(figsize = (20, 6))
+    fig1 = go.Figure()
+    fig1.add_trace(go.Scatter(x=t, y=x,
+                            name='lines',
+                            line=dict(color=epsilon_palette[0], width=3)))
 
-    plt.subplot(421)
-    plt.plot(t, x, 'r')
-    plt.ylabel('Amplitude')
-    plt.xlabel("Time")
-    plt.title("Original signal")
+    fig1.update_layout(paper_bgcolor='#F0F2F6',
+                    font=dict(size=10, family='Arial'), width=400*2, height=350,)
+    fig1.update_xaxes(title_text = "Temps")
+    fig1.update_yaxes(title_text = "Signal original")
 
-    plt.subplot(143)
+    st.write(fig1)
 
-    plt.stem(freq, np.abs(X), 'b', \
-            markerfmt=" ", basefmt="-b")
-
-    plt.xlabel('Freq (Hz)')
-    plt.ylabel('FFT Amplitude')
-    plt.xlim(0, 10)
-
-    plt.title("Transformé de fourier")
-
-
-    plt.subplot(423)
-
-    plt.plot(t, x1, 'r')
-    plt.ylabel('Amplitude')
-    plt.xlabel("Time")
-    plt.title("signal 1")
-
-
-
-    plt.subplot(425)
-
-    plt.plot(t, x2, 'r')
-    plt.ylabel('Amplitude')
-    plt.xlabel("Time")
-    plt.title("signal 2")
-
-    plt.subplot(427)
-    plt.plot(t, x3, 'r')
-    plt.ylabel('Amplitude')
-    plt.xlabel("Time")
-    plt.title("signal 3")
-
-    plt.tight_layout()
-    
-    st.pyplot(fig)
 
 def set_notes():
     st.image('images/barre_eps.PNG', width=400)
