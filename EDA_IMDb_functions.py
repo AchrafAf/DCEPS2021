@@ -1274,7 +1274,7 @@ def set_decomposition_v2():
 
     fig1.update_layout(title='Signal original', paper_bgcolor='#F0F2F6', 
                     margin=dict(l=20, r=20, t=50, b=20),
-                    font=dict(size=10, family='Arial'), width=800*2/3, height=300,)
+                    font=dict(size=10, family='Arial'), width=800*2/3, height=250,)
     fig1.update_xaxes(title_text = "Temps")
     fig1.update_yaxes(title_text = "Signal original")
 
@@ -1285,7 +1285,7 @@ def set_decomposition_v2():
     )])
     fig2.update_layout(title='Transformée de fourier',
                     paper_bgcolor='#F0F2F6', margin=dict(l=20, r=20, t=50, b=20),
-                    font=dict(size=10, family='Arial'), width=800/3, height=300,)
+                    font=dict(size=10, family='Arial'), width=800/3, height=250,)
     fig2.update_xaxes(title_text = "Freq (Hz)")
     fig2.update_yaxes(title_text = "FFT Amplitude")
 
