@@ -1306,6 +1306,23 @@ def set_decomposition_v2():
     with col3:
         f3 = st.checkbox('7 hz')
 
+    fig3 = go.Figure()
+    fig3.add_trace(go.Scatter(x=t, y=x1*int(f1),
+                            name='lines',
+                            line=dict(color=epsilon_palette[1], width=1.5)))
+    fig3.add_trace(go.Scatter(x=t, y=x2*int(f2),
+                            name='lines',
+                            line=dict(color=epsilon_palette[2], width=1.5)))
+    fig3.add_trace(go.Scatter(x=t, y=x3*int(f3),
+                            name='lines',
+                            line=dict(color=epsilon_palette[3], width=1.5)))
+
+    fig3.update_layout(title='Signaux élémentaires', paper_bgcolor='#F0F2F6', showlegend=False,
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800/2, height=250,)
+    fig3.update_xaxes(title_text = "Temps")
+
+
     fig4 = go.Figure()
     fig4.add_trace(go.Scatter(x=t, y=x,
                             name='lines',
@@ -1320,6 +1337,8 @@ def set_decomposition_v2():
     fig4.update_xaxes(title_text = "Temps")
 
     col1, col2 = st.columns(2)
+    with col1:
+        st.write(fig3)
     with col2:
         st.write(fig4)
 
