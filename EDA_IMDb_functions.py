@@ -1271,6 +1271,9 @@ def set_decomposition():
 
 def set_notes():
     st.markdown('# Notes musicales')
+    st.markdown("Dans cette partie on  la répartition des notes musicales dominantes pour selon la présence ou l'absence des chants de oiseaux")
+
+    
 
 def set_data():
     movies = load_csv(path)
