@@ -16,8 +16,8 @@ import librosa.display
 import scipy
 from scipy.fftpack import fft
 
-plt.style.use("seaborn")
-
+#plt.style.use("seaborn")
+epsilon_palette = ['#00a8ff', '#28babe', '#f21d00', '#FFBA00', '#0F2D5F', '#00D296']
 #@st.cache
 def load_csv(path, sep=';'):
     data = pd.read_csv(path, sep=sep)
@@ -1106,6 +1106,17 @@ def set_stats_desc_v2():
     hasbird_flag2['catégorie'] = hasbird_flag2.hasbird.apply(label_func)
     df_t_gpd = metadata.groupby(['tranche_', 'tranche']).count()[['t']]\
                 .reset_index().sort_values('tranche_', ascending=False)
+
+    fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
+                title='Répartition des bases des fichiers sonores', width=400, height=400)
+    fig1.update_layout(paper_bgcolor='#F0F2F6')
+    fig1.update_traces(showlegend=False, hoverinfo='label+percent', textinfo='label+percent', textfont_size=12,
+                    marker=dict(colors=epsilon_palette, line=dict(color='#000000', width=2)))
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(fig1)
+
+
 
 
     fig = make_subplots(
