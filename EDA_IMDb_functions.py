@@ -1140,50 +1140,6 @@ def set_stats_desc_v2():
 
 
     
-    
-    fig1 = px.pie(train_valid, values='nb_items_base', names='base', hole=.3,
-                  title='Répartition des bases des fichiers sonores')
-    fig1.update_layout(paper_bgcolor='#F0F2F6')
-    
-
-
-    fig2 = px.pie(hasbird_flag, values='nb_items_hasbird', names='catégorie', hole=.3,
-                  title='Répartition des catégories de fichiers sonores')
-    fig2.update_layout(paper_bgcolor='#F0F2F6')
-
-
-    fig3 = make_subplots(rows=1, cols=2, specs=[[{"type": "pie"}, {"type": "pie"}]])
-
-
-    fig3.add_trace(go.Pie(
-        values=hasbird_flag2[hasbird_flag2.base=='apprentissage']['nb_items_hasbird'].values,
-        labels=hasbird_flag2[hasbird_flag2.base=='apprentissage']['catégorie'].values,
-        hole=.3,
-        title="apprentissage"), 
-        row=1, col=1)
-
-    fig3.add_trace(go.Pie(
-        values=hasbird_flag2[hasbird_flag2.base=='validation']['nb_items_hasbird'].values,
-        labels=hasbird_flag2[hasbird_flag2.base=='validation']['catégorie'].values,
-        hole=.3,
-        title="validation"),
-        row=1, col=2)
-
-    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base',
-                    paper_bgcolor='#F0F2F6')
-
-
-
-    fig4 = px.bar(df_t_gpd, x="t", y="tranche", color='tranche_', orientation='h',
-                height=400,
-                title='Répartition des fichiers audios en fonction de leur durée')
-    fig4.update(layout_coloraxis_showscale=False)
-    fig4.update_layout(paper_bgcolor='#F0F2F6')
-
-    st.write(fig1)
-    st.write(fig2)
-    st.write(fig3)
-    st.write(fig4)
 
 def set_features():
     st.title('Features spectrales')
