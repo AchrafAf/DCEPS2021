@@ -1121,12 +1121,35 @@ def set_stats_desc_v2():
     fig2.update_traces( hoverinfo='label+percent', textinfo='percent', textfont_size=12,
                     marker=dict(colors=epsilon_palette[2:4], line=dict(color='#000000', width=1.5)))
 
+    fig3 = make_subplots(rows=1, cols=2, specs=[[{"type": "pie"}, {"type": "pie"}]])
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag2[hasbird_flag2.base=='apprentissage']['nb_items_hasbird'].values,
+        labels=hasbird_flag2[hasbird_flag2.base=='apprentissage']['catégorie'].values,
+        hole=.3,
+        title="apprentissage"), 
+        row=1, col=1)
+
+    fig3.add_trace(go.Pie(
+        values=hasbird_flag2[hasbird_flag2.base=='validation']['nb_items_hasbird'].values,
+        labels=hasbird_flag2[hasbird_flag2.base=='validation']['catégorie'].values,
+        hole=.3,
+        title="validation"),
+        row=1, col=2)
+
+    fig3.update_layout(title_text='Répartition des catégories des fichiers sonores par base', width=400*2, height=350,
+                    paper_bgcolor='#F0F2F6', legend=dict(orientation="h",y=-0.3, x=0.21),
+                    font=dict(size=10, family='Arial'))
+    fig3.update_traces(hoverinfo='label+percent', textinfo='percent', textfont_size=12,
+                    marker=dict(colors=epsilon_palette[4:6], line=dict(color='#000000', width=1.5)))
+
+
+
     col1, col2 = st.columns(2)   
     with col1:
         st.write(fig1)
     with col2:
         st.write(fig2)
-
+    st.write(fig3)
 
 
 
