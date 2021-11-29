@@ -1108,6 +1108,24 @@ def set_stats_desc_v2():
                 .reset_index().sort_values('tranche_', ascending=False)
 
 
+    fig = make_subplots(
+        rows=3, cols=2,
+        specs=[[{}, {}],
+               [{}, {}],
+               [{"colspan": 2}, None]],
+        subplot_titles=("First Subplot","Second Subplot", "Third Subplot", "4th subplot"))
+
+    fig.add_trace(go.Scatter(x=[1, 2], y=[1, 2]),
+                    row=1, col=1)
+
+    fig.add_trace(go.go.Pie(values=train_valid.nb_items_base,
+                            labels=train_valid.base),
+                  row=1, col=2)
+    fig.add_trace(go.Scatter(x=[1, 2, 3], y=[2, 1, 2]),
+                    row=2, col=1)
+
+    fig.update_layout(showlegend=False, title_text="Specs with Subplot Title")
+    st.write(fig)
 
 
     
