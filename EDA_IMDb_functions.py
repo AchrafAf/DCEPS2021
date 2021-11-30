@@ -1162,15 +1162,30 @@ def set_features():
 
 
     chroma_orig = librosa.feature.chroma_cqt(y=x, sr=sr)
-    y_harm = librosa.effects.harmonic(y=x, margin=8)
-    chroma_harm = librosa.feature.chroma_cqt(y=y_harm, sr=sr)
-    chroma_filter = np.minimum(chroma_harm,
-                            librosa.decompose.nn_filter(chroma_harm,
-                                                        aggregate=np.median,
-                                                        metric='cosine'))
-    chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
+    #y_harm = librosa.effects.harmonic(y=x, margin=8)
+    #chroma_harm = librosa.feature.chroma_cqt(y=y_harm, sr=sr)
+    #chroma_filter = np.minimum(chroma_harm,
+    #                        librosa.decompose.nn_filter(chroma_harm,
+    #                                                    aggregate=np.median,
+    #                                                    metric='cosine'))
+    #chroma_smooth = scipy.ndimage.median_filter(chroma_filter, size=(1, 9))
+    trace = [go.Heatmap(
+        x= bins,
+        y= ['Do', ' ', 'Ré', '  ', 'Mi', 'Fa', '   ', 'Sol', '    ', 'La', '     ', 'Si'],
+        z= chroma_orig,
+        colorscale= 'jet', #[(0., epsilon_palette[4]), (.50, epsilon_palette[0]),
+                    #(.75, epsilon_palette[3]), (1,epsilon_palette[2])] ,
+        )]
+    layout = go.Layout(
+        xaxis = dict(title = 'Temps (s)'), # y-axis label
+        )
+    fig3 = go.Figure(data=trace, layout=layout)
+    fig3.update_layout(title='Chromagramme', paper_bgcolor='#F0F2F6', 
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800, height=250)
 
-    fig3, ax = plt.subplots(figsize=(13,4))
+
+    fig3_, ax = plt.subplots(figsize=(13,4))
     librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax);
     #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
     #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
@@ -1179,6 +1194,7 @@ def set_features():
     st.write(fig1)
     st.write(fig2)
     st.write(fig3)
+    st.write(fig3_)
 
 
 def set_decomposition():
