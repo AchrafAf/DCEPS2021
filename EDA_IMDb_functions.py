@@ -1348,7 +1348,7 @@ def set_notes():
     st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
 
     chroma_smooth_max_notes_gpd = load_csv(path='data/chroma_smooth_max_notes_gpd.csv', sep=',')
-    chroma_smooth_max_notes_gpd = chroma_smooth_max_notes_gpd.set_index(['hasbird', 'note', 'notes'])
+    chroma_smooth_max_notes_gpd = chroma_smooth_max_notes_gpd.set_index(['hasbird'])
 
     fig1 = go.Figure()
     fig1.add_trace(go.Bar(x=chroma_smooth_max_notes_gpd.loc[0].notes,
