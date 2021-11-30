@@ -1126,9 +1126,16 @@ def set_features():
 
     df_audio = pd.DataFrame(x, columns=['audio'])
     df_audio['time'] = df_audio.index/sr
-    fig1 = px.line(df_audio, x='time', y="audio")
-    fig1.update_yaxes(visible=False)
-    fig1.update_layout(paper_bgcolor='#F0F2F6')
+    fig1 = go.Figure()
+    fig1.add_trace(go.Scatter(x=df_audio.time, y=df_audio.audio,
+                            name='lines',
+                            line=dict(color=epsilon_palette[4], width=1)))
+
+    fig1.update_layout(title='Signal audio', paper_bgcolor='#F0F2F6', 
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800, height=250,)
+    fig1.update_xaxes(title_text = "Temps (s)")
+    fig1.update_yaxes(title_text = "Amplitude")
 
     fig2 = plt.figure(figsize=(15,4))
     mel_spect = librosa.feature.melspectrogram(y=x, sr=sr, n_fft=2048)
