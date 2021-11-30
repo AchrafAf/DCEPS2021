@@ -1160,12 +1160,6 @@ def set_features():
     fig2.update_yaxes(type="log") # log range: 10^0=1, 10^5=100000
 
 
-    fig2_ = plt.figure(figsize=(15,4))
-    mel_spect = librosa.feature.melspectrogram(y=x, sr=sr, n_fft=2048)
-    mel_spect = librosa.power_to_db(mel_spect, ref=np.max)
-    librosa.display.specshow(mel_spect, y_axis='mel', x_axis='time');
-    plt.title('Mel Spectrogram')
-    plt.colorbar(format='%+2.0f dB');
 
     chroma_orig = librosa.feature.chroma_cqt(y=x, sr=sr)
     y_harm = librosa.effects.harmonic(y=x, margin=8)
@@ -1184,7 +1178,6 @@ def set_features():
 
     st.write(fig1)
     st.write(fig2)
-    st.write(fig2_)
     st.write(fig3)
 
 
