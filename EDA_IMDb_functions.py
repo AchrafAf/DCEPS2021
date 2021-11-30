@@ -1351,6 +1351,9 @@ def set_notes():
     st.markdown('# Notes musicales')
     st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
 
+    chroma_smooth_max_notes_gpd = load_csv(path='data/chroma_smooth_max_notes_gpd.csv', sep=',')
+    st.table(chroma_smooth_max_notes_gpd)
+    
 
 
 def set_data():
