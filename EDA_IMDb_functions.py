@@ -1242,10 +1242,6 @@ def set_decomposition_v2():
     st.markdown("# La décomposition d'un signal")
     st.markdown("### Transformation de Fourier")
 
-    #st.write('Select three known variables:')
-    #opts = [ ('s', 'displacement'), ('u', 'initial velocity'), ('v', 'final velocity'), ('a', 'acceleration'), ('t', 'time') ]
-    #known_variables = {symbol: st.checkbox(f"{name} ({symbol})") for symbol, name in opts}    
-
 
     # sampling rate
     sr = 2000
@@ -1352,8 +1348,38 @@ def set_notes():
     st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
 
     chroma_smooth_max_notes_gpd = load_csv(path='data/chroma_smooth_max_notes_gpd.csv', sep=',')
-    st.table(chroma_smooth_max_notes_gpd)
-    
+    chroma_smooth_max_notes_gpd = chroma_smooth_max_notes_gpd.set_index(['hasbird', 'note', 'notes'])
+
+    fig1 = go.Figure()
+    fig1.add_trace(go.Bar(x=chroma_smooth_max_notes_gpd.loc[0].notes,
+                        y=chroma_smooth_max_notes_gpd.loc[0].iid/chroma_smooth_max_notes_gpd.loc[0].iid.sum(),
+                        marker_color=epsilon_palette*2
+                    ))
+    fig1.update_layout(title='pour les fichiers sans chant d\'oiseaux',
+                    paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
+                    font=dict(size=10, family='Arial'), width=400, height=350,
+                    margin=dict(l=20, r=20, t=50, b=20), yaxis_range=[0,.15])
+    fig1.layout.yaxis.tickformat = ',.0%'
+    fig1.update_xaxes(tickangle=35)
+
+    fig2 = go.Figure()
+    fig2.add_trace(go.Bar(x=chroma_smooth_max_notes_gpd.loc[1].notes,
+                        y=chroma_smooth_max_notes_gpd.loc[1].iid/chroma_smooth_max_notes_gpd.loc[1].iid.sum(),
+                        marker_color=epsilon_palette*2
+                    ))
+    fig2.update_layout(title='pour les fichiers avec chant d\'oiseaux',
+                    paper_bgcolor='#F0F2F6', legend=dict(orientation="h",yanchor="top"),
+                    font=dict(size=10, family='Arial'), width=400, height=350,
+                    margin=dict(l=20, r=20, t=50, b=20), yaxis_range=[0,.15])
+    fig2.layout.yaxis.tickformat = ',.0%'
+    fig2.update_xaxes(tickangle=35)
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.write(fig1)
+    with c2:
+        st.write(fig2)
+
 
 
 def set_data():
