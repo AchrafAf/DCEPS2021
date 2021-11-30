@@ -15,6 +15,7 @@ import IPython.display as ipd
 import librosa.display
 import scipy
 from scipy.fftpack import fft
+from scipy import signal
 
 #plt.style.use("seaborn")
 epsilon_palette = ['#00a8ff', '#28babe', '#f21d00', '#FFBA00', '#0F2D5F', '#00D296']
@@ -1122,8 +1123,6 @@ def set_features():
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/wav')
 
-
-
     df_audio = pd.DataFrame(x, columns=['audio'])
     df_audio['time'] = df_audio.index/sr
     fig1 = go.Figure()
@@ -1137,7 +1136,31 @@ def set_features():
     fig1.update_xaxes(title_text = "Temps (s)")
     fig1.update_yaxes(title_text = "Amplitude")
 
-    fig2 = plt.figure(figsize=(15,4))
+    N = 512 #Number of point in the fft
+    w = signal.blackman(N)
+    freqs, bins, Pxx = signal.spectrogram(x, sr,window = w,nfft=N)
+    Pxx = Pxx[freqs < 11000]
+    freqs = freqs[freqs < 11000]
+    trace = [go.Heatmap(
+        x= bins,
+        y= freqs,
+        z= 10*np.log10(Pxx),
+        colorscale= 'jet', #[(0., epsilon_palette[4]), (.50, epsilon_palette[0]),
+                    #(.75, epsilon_palette[3]), (1,epsilon_palette[2])] ,
+        )]
+    layout = go.Layout(
+        title = 'Spectrogram with plotly',
+        yaxis = dict(title = 'Fréquence (Hz)'), # x-axis label
+        xaxis = dict(title = 'Temps (s)'), # y-axis label
+        )
+    fig2 = go.Figure(data=trace, layout=layout)
+    fig2.update_layout(title='Spectrogramme', paper_bgcolor='#F0F2F6', 
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800, height=250, yaxis_range=[2.6, 4.0])
+    fig2.update_yaxes(type="log") # log range: 10^0=1, 10^5=100000
+
+
+    fig2_ = plt.figure(figsize=(15,4))
     mel_spect = librosa.feature.melspectrogram(y=x, sr=sr, n_fft=2048)
     mel_spect = librosa.power_to_db(mel_spect, ref=np.max)
     librosa.display.specshow(mel_spect, y_axis='mel', x_axis='time');
@@ -1161,6 +1184,7 @@ def set_features():
 
     st.write(fig1)
     st.write(fig2)
+    st.write(fig2_)
     st.write(fig3)
 
 
