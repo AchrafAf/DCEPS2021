@@ -38,7 +38,6 @@ menu = st.sidebar.radio(
     "",
     ("Statistiques descriptives",
      "Décomposition d'un signal",
-     "Décomposition d'un signal V2",
      "Features spectrales",
      "Notes musicales",
     ),
@@ -57,7 +56,7 @@ if menu == 'Statistiques descriptives':
 if menu == 'Features spectrales':
     set_features()
 if menu == "Décomposition d'un signal":
-    set_decomposition()
+    set_decomposition_v2()
 if menu == "Décomposition d'un signal V2":
     set_decomposition_v2()
 if menu == "Notes musicales":
