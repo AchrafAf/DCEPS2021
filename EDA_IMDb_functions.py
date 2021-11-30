@@ -1185,8 +1185,8 @@ def set_features():
                     font=dict(size=10, family='Arial'), width=800, height=250)
 
 
-    fig3_, ax = plt.subplots(figsize=(13,4))
-    librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax);
+    #fig3_, ax = plt.subplots(figsize=(13,4))
+    #librosa.display.specshow(chroma_smooth, y_axis='chroma', x_axis='time', ax=ax);
     #notes_dict = {'C':'Do', 'D':'Ré', 'E':'Mi', 'F':'Fa', 'G':'Sol', 'A':'La', 'B':'Si', '':''}
     #labels = [notes_dict[item.get_text()] for item in ax.get_yticklabels()];
     #ax.set_yticklabels(labels);
@@ -1194,7 +1194,7 @@ def set_features():
     st.write(fig1)
     st.write(fig2)
     st.write(fig3)
-    st.write(fig3_)
+    #st.write(fig3_)
 
 
 def set_decomposition():
