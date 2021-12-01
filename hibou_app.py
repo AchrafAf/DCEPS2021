@@ -38,8 +38,8 @@ menu = st.sidebar.radio(
     "",
     ("Statistiques descriptives",
      "Décomposition d'un signal",
-     "Features spectrales",
      "Notes musicales",
+     "Features spectrales",
     ),
 )
 
