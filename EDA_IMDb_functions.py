@@ -1392,6 +1392,8 @@ def set_notes():
     audio_bytes_doremi = audio_file_doremi.read()
     st.audio(audio_bytes_doremi, format='audio/wav')
     
+    N = 512 #Number of point in the fft
+    w = signal.blackman(N)
     chroma_orig_ = librosa.feature.chroma_cqt(y=x_, sr=sr_)
     freqs_, bins_, Pxx_ = signal.spectrogram(x_, sr_,window = w,nfft=N)
     trace = [go.Heatmap(
