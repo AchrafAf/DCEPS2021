@@ -1385,7 +1385,12 @@ def set_decomposition_v2():
 def set_notes():
     st.image('images/barre_eps.PNG', width=400)
     st.markdown('# Notes musicales')
-    st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
+    #st.markdown("Dans cette partie, on cherche la répartition des notes musicales dominantes dans les fichiers audio selon la présence ou l'absence des chants de oiseaux")
+    x_, sr_ = librosa.load(f'data/wav_samples/doremi.wav')
+    
+    audio_file_doremi = open(f'data/wav_samples/doremi.wav', 'rb')
+    audio_bytes_doremi = audio_file_doremi.read()
+    st.audio(audio_bytes_doremi, format='audio/wav')
 
     chroma_smooth_max_notes_gpd = load_csv(path='data/chroma_smooth_max_notes_gpd.csv', sep=',')
     chroma_smooth_max_notes_gpd = chroma_smooth_max_notes_gpd.set_index(['hasbird'])
