@@ -1316,7 +1316,7 @@ def set_decomposition_v2():
                     margin=dict(l=20, r=20, t=50, b=20),
                     font=dict(size=10, family='Arial'), width=800*2/3, height=250,)
     fig1.update_xaxes(title_text = "Temps")
-    fig1.update_yaxes(title_text = "Signal original")
+    fig1.update_yaxes(title_text = "Amplitude")
 
     fig2 = go.Figure(data=[go.Bar(
         x=freq[np.abs(X) > 0.1],
