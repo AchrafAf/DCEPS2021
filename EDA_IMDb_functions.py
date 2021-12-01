@@ -1391,6 +1391,29 @@ def set_notes():
     audio_file_doremi = open(f'data/wav_samples/doremi.wav', 'rb')
     audio_bytes_doremi = audio_file_doremi.read()
     st.audio(audio_bytes_doremi, format='audio/wav')
+    
+    N = 512 #Number of point in the fft
+    w = signal.blackman(N)
+    freqs_, bins_, Pxx_ = signal.spectrogram(x_, sr_,window = w,nfft=N)
+    trace = [go.Heatmap(
+        x= bins_,
+        y= freqs_,
+        z= 10*np.log10(Pxx_),
+        colorscale= 'jet', #[(0., epsilon_palette[4]), (.50, epsilon_palette[0]),
+                    #(.75, epsilon_palette[3]), (1,epsilon_palette[2])] ,
+        )]
+    layout = go.Layout(
+        title = 'Spectrogram with plotly',
+        yaxis = dict(title = 'Fréquence (Hz)'), # x-axis label
+        xaxis = dict(title = 'Temps (s)'), # y-axis label
+        )
+    fig1 = go.Figure(data=trace, layout=layout)
+    fig1.update_layout(title='Spectrogramme', paper_bgcolor='#F0F2F6', 
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    font=dict(size=10, family='Arial'), width=800, height=250, yaxis_range=[2.6, 4.0])
+    fig1.update_yaxes(type="log") # log range: 10^0=1, 10^5=100000
+
+    st.write(fig1)
 
     chroma_smooth_max_notes_gpd = load_csv(path='data/chroma_smooth_max_notes_gpd.csv', sep=',')
     chroma_smooth_max_notes_gpd = chroma_smooth_max_notes_gpd.set_index(['hasbird'])
