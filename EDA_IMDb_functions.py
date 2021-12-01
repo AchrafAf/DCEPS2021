@@ -1114,7 +1114,7 @@ def set_features():
     #col1, col2 = st.columns(2)
     #with col1:
     iid_hasbird = st.selectbox('Choisir un fichier audio', sample.iid_hasbird)
-    st.table(iid_hasbird)
+    print(iid_hasbird)
     iid = sample[sample.iid_hasbird == iid_hasbird].itemid.values[0]    
     #iid = '6abe6818-52ff-4cc6-8e4a'
 
